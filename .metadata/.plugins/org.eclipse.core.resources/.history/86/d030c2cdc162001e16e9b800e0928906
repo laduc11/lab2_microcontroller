@@ -1,0 +1,33 @@
+/*
+ * timer.c
+ *
+ *  Created on: Oct 4, 2023
+ *      Author: DELL
+ */
+
+#include "timer.h"
+
+int count_timer[MAX_FLAG] = {0};
+
+void set_timer(int duration, int idx)
+{
+	count_timer[idx] = duration;
+	timer_flag[idx] = 0;
+}
+
+void run_timer(int idx)
+{
+	if (count_timer[idx] > 0)
+	{
+		count_timer[idx]--;
+		if (count_timer[idx] <= 0)
+		{
+			timer_flag[idx] = 1;
+		}
+	}
+}
+
+int get_flag(int idx)
+{
+	return timer_flag[idx];
+}
