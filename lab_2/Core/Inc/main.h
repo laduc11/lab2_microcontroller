@@ -70,14 +70,14 @@ void Error_Handler(void);
 #define B_GPIO_Port GPIOB
 #define C_Pin GPIO_PIN_2
 #define C_GPIO_Port GPIOB
-#define G_Pin GPIO_PIN_3
-#define G_GPIO_Port GPIOB
-#define F_Pin GPIO_PIN_4
-#define F_GPIO_Port GPIOB
-#define E_Pin GPIO_PIN_5
-#define E_GPIO_Port GPIOB
-#define D_Pin GPIO_PIN_6
+#define D_Pin GPIO_PIN_3
 #define D_GPIO_Port GPIOB
+#define E_Pin GPIO_PIN_4
+#define E_GPIO_Port GPIOB
+#define F_Pin GPIO_PIN_5
+#define F_GPIO_Port GPIOB
+#define G_Pin GPIO_PIN_6
+#define G_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
