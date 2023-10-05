@@ -7,7 +7,7 @@
 
 #include "led7seg.h"
 
-int led_buffer[MAX_LED] = {2, 2, 0, 6};
+int led_buffer[MAX_LED] = {1, 2, 3, 4};
 
 void display7SEG(int num)
 {

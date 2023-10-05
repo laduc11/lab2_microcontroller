@@ -7,8 +7,6 @@
 
 #include "led7seg.h"
 
-int led_buffer[MAX_LED] = {2, 2, 0, 6};
-
 void display7SEG(int num)
 {
 	switch (num)
@@ -114,6 +112,7 @@ void display7SEG(int num)
 		break;
 	}
 }
+
 void set_led7seg(int idx)
 {
 	switch(idx)
@@ -137,12 +136,4 @@ void set_led7seg(int idx)
 		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 		break;
 	}
-}
-void update7SEG(int idx)
-{
-	if (idx >= MAX_LED || idx < 0)
-		return;
-	set_led7seg(-1);
-	set_led7seg(idx);
-	display7SEG(led_buffer[idx]);
 }

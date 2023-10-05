@@ -1112,3 +1112,38 @@
 2023-10-05 02:29:41,710 [INFO] ProjectBuilder:3789 - Time for Generating toolchain IDE Files: 3036mS.
 2023-10-05 02:29:41,711 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.
 2023-10-05 02:29:41,711 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.
+2023-10-05 07:25:24,263 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 907737784 Bytes (1073741824)
+2023-10-05 07:25:24,970 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 931810184 Bytes (1073741824)
+2023-10-05 07:25:27,142 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 776145416 Bytes (1073741824)
+2023-10-05 07:25:27,494 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2023-10-05 07:25:27,495 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2023-10-05 07:25:27,495 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2023-10-05 07:25:27,495 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2023-10-05 07:25:27,495 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: TIM1_8F1
+2023-10-05 07:25:27,496 [INFO] CodeGenerator:663 - code generatio: config db path: E:\STM32\STM32CubeIDE_1.7.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.3.0.202107141111\\db\
+2023-10-05 07:25:27,862 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\MXTmpFiles\license.tmp_save
+2023-10-05 07:25:27,930 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\MXTmpFiles\license.tmp
+2023-10-05 07:25:27,986 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\MXTmpFiles\gpio.tmp_save
+2023-10-05 07:25:28,062 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\MXTmpFiles\gpio.tmp
+2023-10-05 07:25:28,312 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\Core\Src\stm32f1xx_it.c_save
+2023-10-05 07:25:28,556 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\Core\Src\stm32f1xx_it.c
+2023-10-05 07:25:28,574 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\Core\Inc\stm32f1xx_it.h_save
+2023-10-05 07:25:28,740 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\Core\Inc\stm32f1xx_it.h
+2023-10-05 07:25:28,776 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\Core\Src\stm32f1xx_hal_msp.c_save
+2023-10-05 07:25:28,891 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\Core\Src\stm32f1xx_hal_msp.c
+2023-10-05 07:25:28,912 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\MXTmpFiles\system.tmp_save
+2023-10-05 07:25:28,996 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\MXTmpFiles\system.tmp
+2023-10-05 07:25:29,034 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\Core\Inc\stm32f1xx_hal_conf.h_save
+2023-10-05 07:25:29,153 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\Core\Inc\stm32f1xx_hal_conf.h
+2023-10-05 07:25:29,195 [WARN] IPConfigManager:3148 - IP not found : TIM
+2023-10-05 07:25:29,196 [WARN] CodeGenerator:3268 - IP not found : null
+2023-10-05 07:25:29,224 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\Core\Inc\main.h_save
+2023-10-05 07:25:29,377 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\Core\Inc\main.h
+2023-10-05 07:25:29,407 [INFO] CodeEngine:239 - oldGeneratedFile, E:\Microcontroller\lab2_microcontroller\lab_2\Core\Src\main.c_save
+2023-10-05 07:25:29,578 [INFO] CodeEngine:257 - Generated code: E:\Microcontroller\lab2_microcontroller\lab_2\Core\Src\main.c
+2023-10-05 07:25:30,356 [INFO] ProjectBuilder:2578 - Time for Copy HAL[1] : 54mS.
+2023-10-05 07:25:30,358 [INFO] ProjectBuilder:3622 - Project Generator version: 3.14.1
+2023-10-05 07:25:30,896 [INFO] ConfigFileManager:1271 - The Die is : DIE412
+2023-10-05 07:25:32,755 [INFO] ProjectBuilder:3789 - Time for Generating toolchain IDE Files: 2397mS.
+2023-10-05 07:25:32,755 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.
+2023-10-05 07:25:32,757 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.

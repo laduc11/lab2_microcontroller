@@ -163,11 +163,7 @@ int main(void)
 			  break;
 		  }
 #endif
-		  if(led >= MAX_LED)
-			  led = 0;
-		  update7SEG(led);
-		  led++;
-		  set_timer(50, 0);
+
 	  }
     /* USER CODE END WHILE */
 
