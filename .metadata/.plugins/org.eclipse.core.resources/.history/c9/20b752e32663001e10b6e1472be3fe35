@@ -104,7 +104,7 @@ int main(void)
   display7SEG(-1);
   set_led7seg(-1);
 
-  set_timer(25, 0);	//timer for 7 segment led
+  set_timer(50, 0);	//timer for 7 segment led
   set_timer(100,1);	//timer for DOT
   int led = 0;
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
@@ -167,7 +167,7 @@ int main(void)
 			  led = 0;
 		  update7SEG(led);
 		  led++;
-		  set_timer(25, 0);
+		  set_timer(50, 0);
 	  }
     /* USER CODE END WHILE */
 

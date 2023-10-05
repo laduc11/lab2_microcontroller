@@ -708,9 +708,9 @@ int main(void)
  80005bc:	f04f 30ff 	mov.w	r0, #4294967295
  80005c0:	f7ff ff76 	bl	80004b0 <set_led7seg>
 
-  set_timer(50, 0);	//timer for 7 segment led
+  set_timer(25, 0);	//timer for 7 segment led
  80005c4:	2100      	movs	r1, #0
- 80005c6:	2032      	movs	r0, #50	; 0x32
+ 80005c6:	2019      	movs	r0, #25
  80005c8:	f000 f9b6 	bl	8000938 <set_timer>
   set_timer(100,1);	//timer for DOT
  80005cc:	2101      	movs	r1, #1
@@ -775,9 +775,9 @@ int main(void)
  8000624:	687b      	ldr	r3, [r7, #4]
  8000626:	3301      	adds	r3, #1
  8000628:	607b      	str	r3, [r7, #4]
-		  set_timer(50, 0);
+		  set_timer(25, 0);
  800062a:	2100      	movs	r1, #0
- 800062c:	2032      	movs	r0, #50	; 0x32
+ 800062c:	2019      	movs	r0, #25
  800062e:	f000 f983 	bl	8000938 <set_timer>
 	  if (get_flag(1))
  8000632:	e7db      	b.n	80005ec <main+0x68>
