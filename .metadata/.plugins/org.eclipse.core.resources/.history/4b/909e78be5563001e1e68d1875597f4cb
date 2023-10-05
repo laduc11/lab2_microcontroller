@@ -179,8 +179,7 @@ int main(void)
 #if 1
 	  if (get_flag(2))
 	  {
-		  int sec = get_sec(), min = get_min(), hour = get_hour();
-		  sec++;
+		  int sec = get_sec();
 		  if (sec >= 60)
 		  {
 			  sec = 0;
@@ -195,7 +194,6 @@ int main(void)
 		  {
 			  hour = 0;
 		  }
-		  set_clock(hour, min, sec);
 		  updateClockBuffrer();
 		  set_timer(100, 2);
 	  }

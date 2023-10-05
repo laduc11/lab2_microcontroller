@@ -195,7 +195,6 @@ int main(void)
 		  {
 			  hour = 0;
 		  }
-		  set_clock(hour, min, sec);
 		  updateClockBuffrer();
 		  set_timer(100, 2);
 	  }

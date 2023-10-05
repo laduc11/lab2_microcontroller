@@ -1,1 +1,5 @@
-clock.c:11:6:updateClockBuffrer	8	static
+clock.c:13:6:updateClockBuffrer	8	static
+clock.c:22:6:set_clock	24	static
+clock.c:33:5:get_hour	4	static
+clock.c:42:5:get_min	4	static
+clock.c:51:5:get_sec	4	static

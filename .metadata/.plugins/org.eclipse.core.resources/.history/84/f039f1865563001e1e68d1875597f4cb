@@ -110,7 +110,7 @@ int main(void)
   set_timer(100, 1);	//timer for DOT
   set_timer(100, 2);		//timer for clock
   int led = 0;
-  set_clock(15, 8, 50);
+  int hour = 15, min = 8, sec = 50;
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   while (1)
@@ -179,7 +179,6 @@ int main(void)
 #if 1
 	  if (get_flag(2))
 	  {
-		  int sec = get_sec(), min = get_min(), hour = get_hour();
 		  sec++;
 		  if (sec >= 60)
 		  {
@@ -195,7 +194,6 @@ int main(void)
 		  {
 			  hour = 0;
 		  }
-		  set_clock(hour, min, sec);
 		  updateClockBuffrer();
 		  set_timer(100, 2);
 	  }

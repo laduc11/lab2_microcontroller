@@ -12,7 +12,7 @@ int hour = 0, min = 0, sec = 0;
 
 void updateClockBuffrer()
 {
-	update_led_buffer(hour, min);
+	update_led_buffer();
 }
 /*
  * Set time for clock
