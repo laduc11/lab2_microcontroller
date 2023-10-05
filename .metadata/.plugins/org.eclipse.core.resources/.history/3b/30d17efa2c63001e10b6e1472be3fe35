@@ -1,0 +1,16 @@
+/*
+ * clock.c
+ *
+ *  Created on: Oct 5, 2023
+ *      Author: DELL
+ */
+
+#include "clock.h"
+#include "led7seg.h"
+
+int hour = 0, min = 0, sec = 0;
+
+void updateClockBuffrer()
+{
+	update_led_buffer(hour, min);
+}

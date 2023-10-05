@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "timer.h"
 #include "led7seg.h"
+#include "clock.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -36,6 +37,7 @@
 
 //#define DEBUG_LED
 //#define EX_2
+#define EX_4
 
 /* USER CODE END PD */
 
@@ -104,9 +106,11 @@ int main(void)
   display7SEG(-1);
   set_led7seg(-1);
 
-  set_timer(25, 0);	//timer for 7 segment led
-  set_timer(100,1);	//timer for DOT
+  set_timer(25, 0);		//timer for 7 segment led
+  set_timer(100, 1);	//timer for DOT
+  set_timer(100, 2);		//timer for clock
   int led = 0;
+  int hour = 15, min = 8, sec = 50;
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   while (1)
@@ -163,12 +167,38 @@ int main(void)
 			  break;
 		  }
 #endif
+
+#ifdef EX_4
 		  if(led >= MAX_LED)
 			  led = 0;
 		  update7SEG(led);
 		  led++;
 		  set_timer(25, 0);
+#endif
 	  }
+#if 1
+	  if (get_flag(2))
+	  {
+		  sec++;
+		  if (sec >= 60)
+		  {
+			  sec = 0;
+			  min++;
+		  }
+		  if (min >= 60)
+		  {
+			  min = 0;
+			  hour++;
+		  }
+		  if (hour >= 24)
+		  {
+			  hour = 0;
+		  }
+//		  updateClockBuffrer();
+		  update_led_buffer(hour, min);
+		  set_timer(100, 2);
+	  }
+#endif
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -302,6 +332,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	run_timer(0);
 	run_timer(1);
+	run_timer(2);
 }
 /* USER CODE END 4 */
 

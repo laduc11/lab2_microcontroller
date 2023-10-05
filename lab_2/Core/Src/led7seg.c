@@ -6,6 +6,7 @@
  */
 
 #include "led7seg.h"
+//#include "clock.h"
 
 int led_buffer[MAX_LED] = {2, 2, 0, 6};
 
@@ -145,4 +146,11 @@ void update7SEG(int idx)
 	set_led7seg(-1);
 	set_led7seg(idx);
 	display7SEG(led_buffer[idx]);
+}
+void update_led_buffer(int hour, int min)
+{
+	led_buffer[0] = hour/10;
+	led_buffer[1] = hour%10;
+	led_buffer[2] = min/10;
+	led_buffer[3] = min%10;
 }
