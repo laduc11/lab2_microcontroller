@@ -133,7 +133,6 @@ int main(void)
 	  if (get_flag(2))
 	  {
 		  int sec = get_sec(), min = get_min(), hour = get_hour();
-
 		  sec++;
 		  if (sec >= 60)
 		  {

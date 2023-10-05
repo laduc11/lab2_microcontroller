@@ -35,6 +35,10 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
+//#define DEBUG_LED
+//#define EX_2
+#define EX_4
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -97,24 +101,18 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  /* Set up initial state */
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
   HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, RESET);
-  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   display7SEG(-1);
   set_led7seg(-1);
 
-  /* Set timer for each object */
   set_timer(25, 0);		//timer for 7 segment led
   set_timer(100, 1);	//timer for DOT
   set_timer(100, 2);	//timer for clock
-
-  /* Declare needed local variable */
   int led = 0;
   set_clock(15, 8, 50);
-
+  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   while (1)
   {
 	  if (get_flag(0))
@@ -133,7 +131,6 @@ int main(void)
 	  if (get_flag(2))
 	  {
 		  int sec = get_sec(), min = get_min(), hour = get_hour();
-
 		  sec++;
 		  if (sec >= 60)
 		  {
