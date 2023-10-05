@@ -99,7 +99,6 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
-  HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, RESET);
   display7SEG(-1);
   set_led7seg(-1);
 
@@ -127,30 +126,15 @@ int main(void)
 		  switch (led)
 		  {
 		  case 0:
-			  set_led7seg(-1);
 			  set_led7seg(0);
+			  set_led7seg(1);
 			  display7SEG(1);
 			  set_timer(50, 0);
 			  led = 1;
 			  break;
 		  case 1:
-			  set_led7seg(-1);
-			  set_led7seg(1);
+
 			  display7SEG(2);
-			  set_timer(50, 0);
-			  led = 2;
-			  break;
-		  case 2:
-			  set_led7seg(-1);
-			  set_led7seg(2);
-			  display7SEG(3);
-			  set_timer(50, 0);
-			  led = 3;
-			  break;
-		  case 3:
-			  set_led7seg(-1);
-			  set_led7seg(3);
-			  display7SEG(0);
 			  set_timer(50, 0);
 			  led = 0;
 			  break;
@@ -293,7 +277,6 @@ static void MX_GPIO_Init(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	run_timer(0);
-	run_timer(1);
 }
 /* USER CODE END 4 */
 
