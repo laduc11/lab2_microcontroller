@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "timer.h"
 #include "led7seg.h"
+#include "clock.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,6 +36,8 @@
 /* USER CODE BEGIN PD */
 
 //#define DEBUG_LED
+//#define EX_2
+#define EX_4
 
 /* USER CODE END PD */
 
@@ -99,11 +102,15 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
+  HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, RESET);
   display7SEG(-1);
   set_led7seg(-1);
 
-  set_timer(50, 0);
+  set_timer(25, 0);		//timer for 7 segment led
+  set_timer(100, 1);	//timer for DOT
+  set_timer(100, 2);		//timer for clock
   int led = 0;
+  set_clock(15, 8, 50);
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   while (1)
@@ -115,31 +122,84 @@ int main(void)
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	  }
 #endif
+	  if (get_flag(1))
+	  {
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		  set_timer(100, 1);
+	  }
 	  if (get_flag(0))
 	  {
+#ifdef EX_2
 		  switch (led)
 		  {
 		  case 0:
+			  set_led7seg(-1);
 			  set_led7seg(0);
-			  set_led7seg(1);
 			  display7SEG(1);
 			  set_timer(50, 0);
 			  led = 1;
 			  break;
 		  case 1:
-
+			  set_led7seg(-1);
+			  set_led7seg(1);
 			  display7SEG(2);
+			  set_timer(50, 0);
+			  led = 2;
+			  break;
+		  case 2:
+			  set_led7seg(-1);
+			  set_led7seg(2);
+			  display7SEG(3);
+			  set_timer(50, 0);
+			  led = 3;
+			  break;
+		  case 3:
+			  set_led7seg(-1);
+			  set_led7seg(3);
+			  display7SEG(0);
 			  set_timer(50, 0);
 			  led = 0;
 			  break;
 		  default:
-			  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-			  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+			  set_led7seg(-1);
 			  set_timer(50, 0);
 			  led = 0;
 			  break;
 		  }
+#endif
+
+#ifdef EX_4
+		  if(led >= MAX_LED)
+			  led = 0;
+		  update7SEG(led);
+		  led++;
+		  set_timer(25, 0);
+#endif
 	  }
+#if 1
+	  if (get_flag(2))
+	  {
+		  int sec = get_sec(), min = get_min(), hour = get_hour();
+		  sec++;
+		  if (sec >= 60)
+		  {
+			  sec = 0;
+			  min++;
+		  }
+		  if (min >= 60)
+		  {
+			  min = 0;
+			  hour++;
+		  }
+		  if (hour >= 24)
+		  {
+			  hour = 0;
+		  }
+		  set_clock(hour, min, sec);
+		  updateClockBuffrer();
+		  set_timer(100, 2);
+	  }
+#endif
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -272,6 +332,8 @@ static void MX_GPIO_Init(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	run_timer(0);
+	run_timer(1);
+	run_timer(2);
 }
 /* USER CODE END 4 */
 
