@@ -12,8 +12,6 @@
 
 #define MAX_LED 4
 
-int led_buffer[MAX_LED];
-
 void display7SEG(int num);
 void set_led7seg(int idx);
 void update7SEG(int idx);

@@ -6,10 +6,14 @@
  */
 
 #include "led7seg.h"
-//#include "clock.h"
 
 int led_buffer[MAX_LED] = {2, 2, 0, 6};
 
+/*
+ * Display number on 7 segment led
+ * Input: number
+ * Output: none
+ * */
 void display7SEG(int num)
 {
 	switch (num)
@@ -115,6 +119,11 @@ void display7SEG(int num)
 		break;
 	}
 }
+/*
+ * Enable 7 segment led
+ * Input: index of led
+ * Output: turn on this led
+ * */
 void set_led7seg(int idx)
 {
 	switch(idx)
@@ -139,6 +148,11 @@ void set_led7seg(int idx)
 		break;
 	}
 }
+/*
+ * Display led buffer on 7 segment led
+ * Input: index of 7 segment led
+ * Output: none
+ * */
 void update7SEG(int idx)
 {
 	if (idx >= MAX_LED || idx < 0)
@@ -147,6 +161,11 @@ void update7SEG(int idx)
 	set_led7seg(idx);
 	display7SEG(led_buffer[idx]);
 }
+/*
+ * Update buffer of 7 segment led
+ * Input: hour, second
+ * Output: none
+ * */
 void update_led_buffer(int hour, int min)
 {
 	led_buffer[0] = hour/10;

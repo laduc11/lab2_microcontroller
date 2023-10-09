@@ -10,20 +10,17 @@
 
 int hour = 0, min = 0, sec = 0;
 
-void updateClockBuffrer()
-{
-	update_led_buffer(hour, min);
-}
 /*
- * Set time for clock
+ * Update time of clock
  * Input: hour, minute, second
  * Output: none
  */
-void set_clock(int h, int m, int s)
+void updateClockBuffrer(int h, int m, int s)
 {
 	hour = h;
 	min = m;
 	sec = s;
+	update_led_buffer(h, m);
 }
 /*
  * Get hour
