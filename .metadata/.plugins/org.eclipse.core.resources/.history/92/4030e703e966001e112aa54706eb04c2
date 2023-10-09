@@ -13,7 +13,8 @@
 
 int hour, min, sec;
 
-void updateClockBuffrer(int h, int m, int s);
+void updateClockBuffrer();
+void set_clock(int h, int m, int s);
 int get_hour();
 int get_min();
 int get_sec();

@@ -2315,3 +2315,11 @@
 2023-10-10 00:21:56,785 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 1mS.
 2023-10-10 00:21:56,786 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.
 >>>>>>> local
+2023-10-10 04:08:38,009 [INFO] Activator:177 - 
+
+
+2023-10-10 04:08:38,011 [INFO] Activator:178 - !SESSION log4j initialized
+2023-10-10 04:10:22,072 [INFO] Activator:177 - 
+
+
+2023-10-10 04:10:22,073 [INFO] Activator:178 - !SESSION log4j initialized

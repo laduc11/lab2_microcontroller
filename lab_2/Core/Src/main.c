@@ -1,21 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * <h2><center>&copy; Copyright (c) 2023 STMicroelectronics.
+ * All rights reserved.</center></h2>
+ *
+ * This software component is licensed by ST under BSD 3-Clause license,
+ * the "License"; You may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at:
+ *                        opensource.org/licenses/BSD-3-Clause
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -64,9 +64,9 @@ static void MX_TIM2_Init(void);
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -109,16 +109,10 @@ int main(void)
   set_buffer('A');
 
   /* Set timer for each object */
-<<<<<<< exercise_9
-  set_timer(25, 0);		//timer for 7 segment led
-  set_timer(100, 1);	//timer for DOT
-  set_timer(100, 2);	//timer for clock
-=======
-  set_timer(2, 0);		//timer for 7 segment led
-  set_timer(2, 1);		//timer for DOT
-  set_timer(2, 2);		//timer for clock
-  set_timer(2, 3);		//timer for led matrix
->>>>>>> local
+  set_timer(2, 0); // timer for 7 segment led
+  set_timer(2, 1); // timer for DOT
+  set_timer(2, 2); // timer for clock
+  set_timer(2, 3); // timer for led matrix
 
   /* Declare needed local variable */
   int led = 0;
@@ -126,54 +120,48 @@ int main(void)
 
   while (1)
   {
-	  if (get_flag(0))
-	  {
-		  if(led >= MAX_LED)
-			  led = 0;
-		  update7SEG(led);
-		  led++;
-		  set_timer(25, 0);		//reset timer 0
-	  }
-	  if (get_flag(1))
-	  {
-		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		  set_timer(100, 1);	//reset timer 1
-	  }
-	  if (get_flag(2))
-	  {
-		  int sec = get_sec(), min = get_min(), hour = get_hour();
+    if (get_flag(0))
+    {
+      if (led >= MAX_LED)
+        led = 0;
+      update7SEG(led);
+      led++;
+      set_timer(25, 0); // reset timer 0
+    }
+    if (get_flag(1))
+    {
+      HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+      set_timer(100, 1); // reset timer 1
+    }
+    if (get_flag(2))
+    {
+      int sec = get_sec(), min = get_min(), hour = get_hour();
 
-		  sec++;
-		  if (sec >= 60)
-		  {
-			  sec = 0;
-			  min++;
-		  }
-		  if (min >= 60)
-		  {
-			  min = 0;
-			  hour++;
-		  }
-		  if (hour >= 24)
-		  {
-			  hour = 0;
-		  }
-<<<<<<< exercise_9
-		  set_clock(hour, min, sec);
-		  updateClockBuffrer();
-		  set_timer(100, 2);
-=======
-		  updateClockBuffrer(hour, min, sec);
-		  set_timer(100, 2);	//reset timer 2
-	  }
-	  if (get_flag(3))
-	  {
-		  updateLEDMatrix(-1);
-		  updateLEDMatrix(get_index());
-		  inc_index();
-		  set_timer(50, 3);
->>>>>>> local
-	  }
+      sec++;
+      if (sec >= 60)
+      {
+        sec = 0;
+        min++;
+      }
+      if (min >= 60)
+      {
+        min = 0;
+        hour++;
+      }
+      if (hour >= 24)
+      {
+        hour = 0;
+      }
+      updateClockBuffrer(hour, min, sec);
+      set_timer(100, 2); // reset timer 2
+    }
+    if (get_flag(3))
+    {
+      updateLEDMatrix(-1);
+      updateLEDMatrix(get_index());
+      inc_index();
+      set_timer(50, 3);
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -182,17 +170,17 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
@@ -202,9 +190,8 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
@@ -217,10 +204,10 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief TIM2 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief TIM2 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_TIM2_Init(void)
 {
 
@@ -258,14 +245,13 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 2 */
 
   /* USER CODE END TIM2_Init 2 */
-
 }
 
 /**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief GPIO Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -275,25 +261,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, COL0_Pin|COL1_Pin|DOT_Pin|LED_RED_Pin
-                          |EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
-                          |COL2_Pin|COL3_Pin|COL4_Pin|COL5_Pin
-                          |COL6_Pin|COL7_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, COL0_Pin | COL1_Pin | DOT_Pin | LED_RED_Pin | EN0_Pin | EN1_Pin | EN2_Pin | EN3_Pin | COL2_Pin | COL3_Pin | COL4_Pin | COL5_Pin | COL6_Pin | COL7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, A_Pin|B_Pin|C_Pin|ROW2_Pin
-                          |ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin
-                          |ROW7_Pin|D_Pin|E_Pin|F_Pin
-                          |G_Pin|ROW0_Pin|ROW1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, A_Pin | B_Pin | C_Pin | ROW2_Pin | ROW3_Pin | ROW4_Pin | ROW5_Pin | ROW6_Pin | ROW7_Pin | D_Pin | E_Pin | F_Pin | G_Pin | ROW0_Pin | ROW1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : COL0_Pin COL1_Pin DOT_Pin LED_RED_Pin
                            EN0_Pin EN1_Pin EN2_Pin EN3_Pin
                            COL2_Pin COL3_Pin COL4_Pin COL5_Pin
                            COL6_Pin COL7_Pin */
-  GPIO_InitStruct.Pin = COL0_Pin|COL1_Pin|DOT_Pin|LED_RED_Pin
-                          |EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
-                          |COL2_Pin|COL3_Pin|COL4_Pin|COL5_Pin
-                          |COL6_Pin|COL7_Pin;
+  GPIO_InitStruct.Pin = COL0_Pin | COL1_Pin | DOT_Pin | LED_RED_Pin | EN0_Pin | EN1_Pin | EN2_Pin | EN3_Pin | COL2_Pin | COL3_Pin | COL4_Pin | COL5_Pin | COL6_Pin | COL7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -303,31 +280,27 @@ static void MX_GPIO_Init(void)
                            ROW3_Pin ROW4_Pin ROW5_Pin ROW6_Pin
                            ROW7_Pin D_Pin E_Pin F_Pin
                            G_Pin ROW0_Pin ROW1_Pin */
-  GPIO_InitStruct.Pin = A_Pin|B_Pin|C_Pin|ROW2_Pin
-                          |ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin
-                          |ROW7_Pin|D_Pin|E_Pin|F_Pin
-                          |G_Pin|ROW0_Pin|ROW1_Pin;
+  GPIO_InitStruct.Pin = A_Pin | B_Pin | C_Pin | ROW2_Pin | ROW3_Pin | ROW4_Pin | ROW5_Pin | ROW6_Pin | ROW7_Pin | D_Pin | E_Pin | F_Pin | G_Pin | ROW0_Pin | ROW1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
 }
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	run_timer(0);
-	run_timer(1);
-	run_timer(2);
-	run_timer(3);
+  run_timer(0);
+  run_timer(1);
+  run_timer(2);
+  run_timer(3);
 }
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -339,14 +312,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

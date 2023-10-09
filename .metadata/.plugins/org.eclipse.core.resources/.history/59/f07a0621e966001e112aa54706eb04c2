@@ -23,6 +23,17 @@ void updateClockBuffrer(int h, int m, int s)
 	update_led_buffer(h, m);
 }
 /*
+ * Set time for clock
+ * Input: hour, minute, second
+ * Output: none
+ */
+void set_clock(int h, int m, int s)
+{
+	hour = h;
+	min = m;
+	sec = s;
+}
+/*
  * Get hour
  * Input: none
  * Output: hour at the moment
