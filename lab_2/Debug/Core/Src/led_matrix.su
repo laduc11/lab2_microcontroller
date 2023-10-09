@@ -1,0 +1,5 @@
+led_matrix.c:19:10:select_pin_0	24	static
+led_matrix.c:46:6:updateLEDMatrix	24	static
+led_matrix.c:101:5:get_index	4	static
+led_matrix.c:110:6:inc_index	4	static
+led_matrix.c:121:6:set_buffer	16	static

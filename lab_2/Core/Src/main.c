@@ -25,6 +25,7 @@
 #include "timer.h"
 #include "led7seg.h"
 #include "clock.h"
+#include "led_matrix.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,11 +106,19 @@ int main(void)
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   display7SEG(-1);
   set_led7seg(-1);
+  set_buffer('A');
 
   /* Set timer for each object */
+<<<<<<< exercise_9
   set_timer(25, 0);		//timer for 7 segment led
   set_timer(100, 1);	//timer for DOT
   set_timer(100, 2);	//timer for clock
+=======
+  set_timer(2, 0);		//timer for 7 segment led
+  set_timer(2, 1);		//timer for DOT
+  set_timer(2, 2);		//timer for clock
+  set_timer(2, 3);		//timer for led matrix
+>>>>>>> local
 
   /* Declare needed local variable */
   int led = 0;
@@ -123,12 +132,12 @@ int main(void)
 			  led = 0;
 		  update7SEG(led);
 		  led++;
-		  set_timer(25, 0);
+		  set_timer(25, 0);		//reset timer 0
 	  }
 	  if (get_flag(1))
 	  {
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		  set_timer(100, 1);
+		  set_timer(100, 1);	//reset timer 1
 	  }
 	  if (get_flag(2))
 	  {
@@ -149,9 +158,21 @@ int main(void)
 		  {
 			  hour = 0;
 		  }
+<<<<<<< exercise_9
 		  set_clock(hour, min, sec);
 		  updateClockBuffrer();
 		  set_timer(100, 2);
+=======
+		  updateClockBuffrer(hour, min, sec);
+		  set_timer(100, 2);	//reset timer 2
+	  }
+	  if (get_flag(3))
+	  {
+		  updateLEDMatrix(-1);
+		  updateLEDMatrix(get_index());
+		  inc_index();
+		  set_timer(50, 3);
+>>>>>>> local
 	  }
     /* USER CODE END WHILE */
 
@@ -254,26 +275,38 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, DOT_Pin|LED_RED_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, COL0_Pin|COL1_Pin|DOT_Pin|LED_RED_Pin
+                          |EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
+                          |COL2_Pin|COL3_Pin|COL4_Pin|COL5_Pin
+                          |COL6_Pin|COL7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, A_Pin|B_Pin|C_Pin|D_Pin
-                          |E_Pin|F_Pin|G_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, A_Pin|B_Pin|C_Pin|ROW2_Pin
+                          |ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin
+                          |ROW7_Pin|D_Pin|E_Pin|F_Pin
+                          |G_Pin|ROW0_Pin|ROW1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : DOT_Pin LED_RED_Pin EN0_Pin EN1_Pin
-                           EN2_Pin EN3_Pin */
-  GPIO_InitStruct.Pin = DOT_Pin|LED_RED_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin;
+  /*Configure GPIO pins : COL0_Pin COL1_Pin DOT_Pin LED_RED_Pin
+                           EN0_Pin EN1_Pin EN2_Pin EN3_Pin
+                           COL2_Pin COL3_Pin COL4_Pin COL5_Pin
+                           COL6_Pin COL7_Pin */
+  GPIO_InitStruct.Pin = COL0_Pin|COL1_Pin|DOT_Pin|LED_RED_Pin
+                          |EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
+                          |COL2_Pin|COL3_Pin|COL4_Pin|COL5_Pin
+                          |COL6_Pin|COL7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : A_Pin B_Pin C_Pin D_Pin
-                           E_Pin F_Pin G_Pin */
-  GPIO_InitStruct.Pin = A_Pin|B_Pin|C_Pin|D_Pin
-                          |E_Pin|F_Pin|G_Pin;
+  /*Configure GPIO pins : A_Pin B_Pin C_Pin ROW2_Pin
+                           ROW3_Pin ROW4_Pin ROW5_Pin ROW6_Pin
+                           ROW7_Pin D_Pin E_Pin F_Pin
+                           G_Pin ROW0_Pin ROW1_Pin */
+  GPIO_InitStruct.Pin = A_Pin|B_Pin|C_Pin|ROW2_Pin
+                          |ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin
+                          |ROW7_Pin|D_Pin|E_Pin|F_Pin
+                          |G_Pin|ROW0_Pin|ROW1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -287,6 +320,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	run_timer(0);
 	run_timer(1);
 	run_timer(2);
+	run_timer(3);
 }
 /* USER CODE END 4 */
 

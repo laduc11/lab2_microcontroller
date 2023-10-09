@@ -1,6 +1,15 @@
+<<<<<<< exercise_9
 main.c:73:5:main	24	static
 main.c:214:6:SystemClock_Config	72	static
 main.c:250:13:MX_TIM2_Init	32	static
 main.c:295:13:MX_GPIO_Init	32	static
 main.c:332:6:HAL_TIM_PeriodElapsedCallback	16	static
 main.c:344:6:Error_Handler	4	static,ignoring_inline_asm
+=======
+main.c:70:5:main	24	static
+main.c:176:6:SystemClock_Config	72	static
+main.c:212:13:MX_TIM2_Init	32	static
+main.c:257:13:MX_GPIO_Init	32	static
+main.c:306:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:322:6:Error_Handler	4	static,ignoring_inline_asm
+>>>>>>> local

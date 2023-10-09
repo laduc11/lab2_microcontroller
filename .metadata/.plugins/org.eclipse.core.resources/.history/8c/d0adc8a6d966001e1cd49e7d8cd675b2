@@ -1,0 +1,105 @@
+/*
+ * led_matrix.c
+ *
+ *  Created on: Oct 10, 2023
+ *      Author: DELL
+ */
+
+#include "led_matrix.h"
+
+const int MAX_LED_MATRIX = 8;
+int index_led_matrix = 0;
+uint8_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
+
+uint16_t select_pin1(int index)
+{
+	uint16_t pin_1 = 0x0000;
+
+	if ((matrix_buffer[index] << 7) >> 7)
+		pin_1 |= ROW0_Pin;
+	if ((matrix_buffer[index] << 6) >> 7)
+		pin_1 |= ROW1_Pin;
+	if ((matrix_buffer[index] << 5) >> 7)
+		pin_1 |= ROW2_Pin;
+	if ((matrix_buffer[index] << 4) >> 7)
+		pin_1 |= ROW3_Pin;
+	if ((matrix_buffer[index] << 3) >> 7)
+		pin_1 |= ROW4_Pin;
+	if ((matrix_buffer[index] << 2) >> 7)
+		pin_1 |= ROW5_Pin;
+	if ((matrix_buffer[index] << 1) >> 7)
+		pin_1 |= ROW6_Pin;
+	if ((matrix_buffer[index] << 0) >> 7)
+		pin_1 |= ROW7_Pin;
+	return pin_1;
+}
+/*
+ * Update column-index from matrix-buffer
+ * Input: index of column
+ * Output: turn on led base on buffer
+ * */
+void updateLEDMatrix(int index){
+	uint16_t pin_selected = ROW0_Pin|ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin|ROW7_Pin;
+    switch (index){
+        case 0:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL0_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(0);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        case 1:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL1_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(1);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        case 2:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL2_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(2);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        case 3:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL3_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(3);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        case 4:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL4_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(4);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        case 5:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL5_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(5);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        case 6:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL6_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(6);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        case 7:
+        	HAL_GPIO_WritePin(COL0_GPIO_Port, COL7_Pin, RESET);
+        	uint16_t pin_1 = select_pin_1(7);
+        	uint16_t pin_0 = pin_selected ^ pin_1;
+        	HAL_GPIO_WritePin(GPIOB, pin_1, SET);
+        	HAL_GPIO_WritePin(GPIOB, pin_0, RESET);
+            break;
+        default:
+        	HAL_GPIO_WritePin(GPIOA, COL0_Pin|COL1_Pin|COL2_Pin|COL3_Pin|COL4_Pin|COL5_Pin|COL6_Pin|COL7_Pin, SET);
+        	HAL_GPIO_WritePin(GPIOB, ROW0_Pin|ROW1_Pin|ROW2_Pin|ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin|ROW7_Pin, SET);
+            break;
+    }
+}
