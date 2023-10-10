@@ -109,15 +109,14 @@ int main(void)
   set_buffer('A');
 
   /* Set timer for each object */
-  set_timer(2, 0); 	// timer for 7 segment led
-  set_timer(2, 1); 	// timer for DOT
-  set_timer(2, 2); 	// timer for clock
-  set_timer(2, 3); 	// timer for led matrix
-  set_timer(2, 4);	// timer for animation led matrix
+  set_timer(2, 0); // timer for 7 segment led
+  set_timer(2, 1); // timer for DOT
+  set_timer(2, 2); // timer for clock
+  set_timer(2, 3); // timer for led matrix
 
   /* Declare needed local variable */
   int led = 0;
-  updateClockBuffrer(15, 8, 50);
+  set_clock(15, 8, 50);
 
   while (1)
   {
@@ -161,12 +160,7 @@ int main(void)
       updateLEDMatrix(-1);
       updateLEDMatrix(get_index());
       inc_index();
-      set_timer(5, 3);
-    }
-    if (get_flag(4))
-    {
-    	shiftLeft();
-    	set_timer(50, 4);
+      set_timer(3, 3);
     }
     /* USER CODE END WHILE */
 
@@ -229,7 +223,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 7999;
+  htim2.Init.Prescaler = 799;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -315,7 +309,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   run_timer(1);
   run_timer(2);
   run_timer(3);
-  run_timer(4);
 }
 /* USER CODE END 4 */
 

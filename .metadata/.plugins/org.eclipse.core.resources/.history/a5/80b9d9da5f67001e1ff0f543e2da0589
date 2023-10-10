@@ -158,6 +158,5 @@ void shiftLeft()
 	matrix_buffer[3] = matrix_buffer[4];
 	matrix_buffer[4] = matrix_buffer[5];
 	matrix_buffer[5] = matrix_buffer[6];
-	matrix_buffer[6] = matrix_buffer[7];
 	matrix_buffer[7] = temp;
 }
