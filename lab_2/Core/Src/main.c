@@ -102,7 +102,7 @@ int main(void)
   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
 #endif
   display7SEG(10);
-  set_timer(50, 0);
+  set_timer(2, 0);
   int led = 0;
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
