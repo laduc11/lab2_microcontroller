@@ -18,25 +18,7 @@ uint8_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
  * */
 uint16_t select_pin_0(int index)
 {
-	uint16_t pin_0 = 0x0000;
-
-	if (!((uint8_t)(matrix_buffer[index] << 7) >> 7))
-		pin_0 |= ROW0_Pin;
-	if (!((uint8_t)(matrix_buffer[index] << 6) >> 7))
-		pin_0 |= ROW1_Pin;
-	if (!((uint8_t)(matrix_buffer[index] << 5) >> 7))
-		pin_0 |= ROW2_Pin;
-	if (!((uint8_t)(matrix_buffer[index] << 4) >> 7))
-		pin_0 |= ROW3_Pin;
-	if (!((uint8_t)(matrix_buffer[index] << 3) >> 7))
-		pin_0 |= ROW4_Pin;
-	if (!((uint8_t)(matrix_buffer[index] << 2) >> 7))
-		pin_0 |= ROW5_Pin;
-	if (!((uint8_t)(matrix_buffer[index] << 1) >> 7))
-		pin_0 |= ROW6_Pin;
-	if (!((uint8_t)(matrix_buffer[index] << 0) >> 7))
-		pin_0 |= ROW7_Pin;
-	return pin_0;
+	return matrix_buffer[index] << 8;
 }
 /*
  * Update column-index from matrix-buffer
@@ -149,3 +131,15 @@ void set_buffer(char input)
  * Input: none
  * Output: none
  * */
+void shiftLeft()
+{
+	uint8_t temp = matrix_buffer[0];
+	matrix_buffer[0] = matrix_buffer[1];
+	matrix_buffer[1] = matrix_buffer[2];
+	matrix_buffer[2] = matrix_buffer[3];
+	matrix_buffer[3] = matrix_buffer[4];
+	matrix_buffer[4] = matrix_buffer[5];
+	matrix_buffer[5] = matrix_buffer[6];
+	matrix_buffer[6] = matrix_buffer[7];
+	matrix_buffer[7] = temp;
+}

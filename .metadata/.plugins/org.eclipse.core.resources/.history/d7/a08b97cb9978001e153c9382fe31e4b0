@@ -163,11 +163,11 @@ int main(void)
       inc_index();
       set_timer(10, 3);
     }
-    if (get_flag(4))
-    {
-    	shiftLeft();
-    	set_timer(50, 4);
-    }
+//    if (get_flag(4))
+//    {
+//    	shiftLeft();
+//    	set_timer(50, 4);
+//    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -856,3 +856,33 @@ Caused by: java.io.EOFException: SSL peer shut down incorrectly
 	at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:110)
 	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1408)
 	... 19 more
+!SESSION 2023-10-27 00:00:34.283 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-10-27 00:01:06.535
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-10-27 00:01:06.614
+!MESSAGE Log4j initialized with config file E:\Microcontroller\lab2_microcontroller\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-10-27 00:01:16.169
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2023-11-01 15:52:51.884 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-11-01 15:53:26.794
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-11-01 15:53:26.896
+!MESSAGE Log4j initialized with config file E:\Microcontroller\lab2_microcontroller\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-11-01 15:53:43.299
+!MESSAGE Started RMI Server, listening on port 41337

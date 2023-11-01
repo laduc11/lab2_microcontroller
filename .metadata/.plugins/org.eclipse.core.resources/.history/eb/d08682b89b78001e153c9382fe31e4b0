@@ -161,7 +161,7 @@ int main(void)
       updateLEDMatrix(-1);
       updateLEDMatrix(get_index());
       inc_index();
-      set_timer(3, 3);
+      set_timer(5, 3);
     }
     if (get_flag(4))
     {
